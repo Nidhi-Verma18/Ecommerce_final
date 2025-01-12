@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+<% include('../partials/navbar') %>
+<h1>User Cart</h1>
+
+<% for(let i of user.cart){ %>
+
+    <div class="card mx-auto mb-3" style="max-width:540px">
+      <div class="row g-0">
+        <div class="col-4">
+          <img src="<%= i.img %>"class="img-fluid" alt="cart">
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h5 class="card-title"><%=i.name %></h5>
+            <p class="card-text"><%=i.desc %></p>
+            <form action="/user/<%= i._id %>/delete" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+       
+      
+    </div>
+
+
+   
+     
+
+<% } %>
+
+
+<form action="/payment_gateway/payumoney" method="POST">
+  <input class="amount" type="hidden" name="amount" value="<%=totalAmount %>"/>
+  <input class="con" type="hidden" name="phone" value="9999999999" />
+  <input type="hidden" name="service_provider" 
+   value="payu_paisa"/>
+  <input type="hidden" class="product" name="productinfo" 
+   value="<%=productInfo %>"/>
+   
+   <input type="submit" value="Pay"/>
+  </form>

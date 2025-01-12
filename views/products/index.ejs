@@ -1,0 +1,30 @@
+<% layout('./layouts/boilerplate') %>
+<%-include('../partials/navbar') %>
+<%-include('../partials/flash') %>
+<div class="row ">
+   <% for(let i of products){ %>
+        <div class="col-lg-4 mt-4">
+            <div class="card mx-auto" style="width: 18rem;">
+                <img src="<%=i.img%>" class="card-img-top" alt="img">
+                <div class="card-body">
+                  <h5 class="card-title"><%=i.name %></h5>
+                  <h5 class="card-title"><%=i.price %></h5>
+                  <p class="card-text"><%=i.desc %></p>
+                  <% if(i.reviews.length){ %>
+                    <p class="text-muted">reviews:<%= i.reviews.length %></p>
+                  <% } else{ %>
+                    <p class="text-muted">No reviews</p>
+                  <%} %>
+                  <a href="/products/<%=i._id %>" class="btn btn-primary">show</a>
+                  <% if(currentUser && currentUser.role=='seller'){ %>
+                  <form class='d-inline-block' action="/products/<%=i._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                  </form>
+                <% } %>
+                </div>
+              </div>
+        </div>
+   <% }  %>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<% layout('./layouts/boilerplate') %>
+
+
+<div class="row ">
+    <div class="col-md-6 mx-auto">
+    <%-include('../partials/flash') %>
+    <h1 class="display-6">Sign Up</h1>
+    <form action="/register" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="username">Username:</label>
+            <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="email">Email:</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="Email">
+        </div>
+
+        <!-- here will make separate div for AUTHORIZATION NOT authentication -->
+         
+        <div class="mb-3">
+            <p>Want to signup as?</p>
+            <div class="mx-2">
+            <label class="form-label" for="buyer">Buyer:</label>
+            <input class="form-check-input" type="radio" id="buyer" value="buyer" name="role">
+            </div>
+
+            <div class="mx-2">
+                <label class="form-label" for="seller">Seller:</label>
+                <input class="form-check-input" type="radio" id="seller" value="seller" name="role">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="password">Password:</label>
+            <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+        </div>
+
+        <button class="btn btn-sm btn-success">Sign Up</button>
+        <p class="fw-light mt-3">Already have an account,<a href="/login">Login</a></p>
+    </div>
+
+
+    </form>
+
+</div>
+</body>
+</html>
