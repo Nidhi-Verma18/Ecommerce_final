@@ -1,7 +1,6 @@
-if(process.env.NODE_ENV!=='product'){
-    require('dotenv').config();
-
-}
+//env file
+const dotenv=require('dotenv');
+dotenv.config();
 
 const express=require('express');
 let app=express();
@@ -14,8 +13,7 @@ const seedDb=require('./seed');
 //require connect-flash and express-session
 const flash=require('connect-flash')
 const session=require('express-session')
-//env file
-const dotenv=require('dotenv');
+
 
 //require P-L-M for hashing
 const PassportLocalMongoose=require('passport-local-mongoose');
@@ -74,7 +72,7 @@ const mongoose = require('mongoose');
 
 const dbURL=process.env.dbURL || 'mongodb://localhost:27017/test'
 // 'mongodb://127.0.0.1:27017/test'
-mongoose.connect(process.env.MONGO_DB)
+mongoose.connect(dbURL)
 .then(()=>{
     console.log("db is connected")
 })
