@@ -2,6 +2,11 @@ const express=require('express');
 const User = require('../models/User');
 const passport = require('passport');
 const router=express.Router();
+
+router.get("/", (req, res) => {
+    res.render("auth/signup");
+});
+
 //task 1 -> to show the signUp form
 router.get('/register',(req,res)=>{
     res.render('auth/signup')
